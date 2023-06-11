@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAGP2023KubernatesAssignment", "NAGP2023KubernatesAssignment.csproj", "{799C6980-B61E-4887-BC3A-36F2E25EFCEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{799C6980-B61E-4887-BC3A-36F2E25EFCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799C6980-B61E-4887-BC3A-36F2E25EFCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799C6980-B61E-4887-BC3A-36F2E25EFCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799C6980-B61E-4887-BC3A-36F2E25EFCEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {140B1822-E816-4652-A773-6F6A126CAB7A}
+	EndGlobalSection
+EndGlobal
