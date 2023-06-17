@@ -5,12 +5,12 @@ using NAGP2023KubernatesAssignment.Models;
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
 
-var base64Bytes = Convert.FromBase64String(builder.Configuration["db-password"]);
+var base64Bytes = Convert.FromBase64String(builder.Configuration["db_password"]);
 var password = System.Text.Encoding.UTF8.GetString(base64Bytes);
 
 // Add services to the container.
-SqlConnection conn = new SqlConnection(new SqlConnectionStringBuilder() { DataSource = builder.Configuration["db-host"], InitialCatalog = builder.Configuration["db-name"], 
-    UserID = builder.Configuration["db-user"], Password = password}.ConnectionString);
+SqlConnection conn = new SqlConnection(new SqlConnectionStringBuilder() { DataSource = builder.Configuration["db_host"], InitialCatalog = builder.Configuration["db_name"], 
+    UserID = builder.Configuration["db_user"], Password = password}.ConnectionString);
 builder.Services.AddDbContext<CoreDbContext>(op => op.UseSqlServer(conn));
 
 builder.Services.AddControllers();
