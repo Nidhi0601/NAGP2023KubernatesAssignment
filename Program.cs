@@ -5,23 +5,30 @@ using NAGP2023KubernatesAssignment.Models;
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
 
-string password = string.Empty;
-try
-{
-    Console.WriteLine($"Password: {builder.Configuration["db_password"]}");
-    var base64Bytes = Convert.FromBase64String(builder.Configuration["db_password"]);
-    password = System.Text.Encoding.UTF8.GetString(base64Bytes).Trim();
-    Console.WriteLine(password);
-}
-catch (Exception ex)
-{
-    Console.WriteLine("Error: Invalid Base64 string format. " + ex.Message);
-}
+//string password = string.Empty;
+//try
+//{
+//    Console.WriteLine($"Password: {builder.Configuration["db_password"]}");
+//    var base64Bytes = Convert.FromBase64String(builder.Configuration["db_password"]);
+//    password = System.Text.Encoding.UTF8.GetString(base64Bytes).Trim();
+//    Console.WriteLine(password);
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine("Error: Invalid Base64 string format. " + ex.Message);
+//}
 
 
 // Add services to the container.
-SqlConnection conn = new SqlConnection(new SqlConnectionStringBuilder() { DataSource = builder.Configuration["db_host"], InitialCatalog = builder.Configuration["db_name"], 
-    UserID = builder.Configuration["db_user"], Password = password}.ConnectionString);
+string connectionString = new SqlConnectionStringBuilder()
+{
+    DataSource = builder.Configuration["db_host"],
+    InitialCatalog = builder.Configuration["db_name"],
+    UserID = builder.Configuration["db_user"],
+    Password = builder.Configuration["db_password"]
+}.ConnectionString;
+Console.WriteLine(connectionString);
+SqlConnection conn = new SqlConnection(connectionString);
 builder.Services.AddDbContext<CoreDbContext>(op => op.UseSqlServer(conn));
 
 builder.Services.AddControllers();

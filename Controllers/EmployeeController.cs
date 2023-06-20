@@ -18,6 +18,7 @@ namespace NAGP2023KubernatesAssignment.Controllers
         [HttpGet(Name = "GetAllEmployees")]
         public async Task<IActionResult> Index()
         {
+            Console.WriteLine("Inside GetAllEmployees");
             var result = await _context.EmployeeDetails.ToListAsync();
             return Ok(result);
         }
