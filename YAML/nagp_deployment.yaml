@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagpdeployment
+  labels:
+    app: nagp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nagp
+  template:
+    metadata:
+      labels:
+        app: nagp
+    spec:
+      containers:
+        - name: nagp
+          image: nidhidocker06/nagp_kubernatesassignment:v7
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_port
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_name
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: db_password
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_user
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "300Mi"
+
